@@ -13,9 +13,6 @@ namespace DataGridViewMysql
         public static MySqlConnection conn = null;
         public static MySqlCommand sql = null;
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
