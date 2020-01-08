@@ -10,8 +10,10 @@ namespace DataGridViewMysql
     static class Program
     {
         public static Form foAblak = null;
-        public static MySqlConnection conn = null;
-        public static MySqlCommand sql = null;
+        public static Form form_Befizetes = null;
+        public static MySqlConnection conn = null;  //-- egységes adabáziskapcsolat miatt
+        public static MySqlCommand sql = null;      //-- parancsok fogadása, futtatása
+        public static DataGridViewRow kivalasztott_tag = null;    //-- Form-ok közötti adatádasáshoz
 
         [STAThread]
         static void Main()
@@ -35,6 +37,7 @@ namespace DataGridViewMysql
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             foAblak = new Form1();
+            form_Befizetes = new Form_Befizetes();
             Application.Run(foAblak);
         }
     }

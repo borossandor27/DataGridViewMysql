@@ -162,26 +162,7 @@ namespace DataGridViewMysql
                 numericUpDown_Iranyitoszam.Value = (int)kivalasztott.Cells["Iranyitoszam"].Value;
                 numericUpDown_SzuletesiEv.Value = (int)kivalasztott.Cells["SzuletesiEv"].Value;
                 //-- Befizetések táblázat frissítése -----------------
-                Program.sql.Parameters.Clear();
-                Program.sql.CommandText = "SELECT `datum`,`osszeg`  FROM `befiz` WHERE `azon` = @id;";
-                Program.sql.Parameters.AddWithValue("@id", kivalasztott.Cells["ID"].Value);
-                try
-                {
-                    using (MySqlDataReader dr = Program.sql.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            int row_index = dataGridView_Befizetesek.Rows.Add();
-                            DataGridViewRow row = dataGridView_Befizetesek.Rows[row_index];
-                            row.Cells["Datum"].Value = dr.GetDateTime("datum");
-                            row.Cells["Osszeg"].Value = dr.GetInt32("osszeg");
-                        }
-                    }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                Befizetesek_Tabla_Update((int)kivalasztott.Cells["ID"].Value);
             }
             else
             {
@@ -189,8 +170,41 @@ namespace DataGridViewMysql
                 textBox_Orszag.Text = "";
                 numericUpDown_Iranyitoszam.Value = numericUpDown_Iranyitoszam.Minimum;
                 numericUpDown_SzuletesiEv.Value = numericUpDown_SzuletesiEv.Maximum;
-                //-- Befizetések táblázat frissítése -----------------
             }
+        }
+        private void Befizetesek_Tabla_Update(int id)
+        {
+            //-- Befizetések táblázat frissítése -----------------
+            Program.sql.Parameters.Clear();
+            Program.sql.CommandText = "SELECT `datum`,`osszeg`  FROM `befiz` WHERE `azon` = @id;";
+            Program.sql.Parameters.AddWithValue("@id", id);
+            try
+            {
+                using (MySqlDataReader dr = Program.sql.ExecuteReader())
+                {
+                    dataGridView_Befizetesek.Rows.Clear();
+                    while (dr.Read())
+                    {
+                        int row_index = dataGridView_Befizetesek.Rows.Add();
+                        DataGridViewRow row = dataGridView_Befizetesek.Rows[row_index];
+                        row.Cells["Datum"].Value = dr.GetDateTime("datum");
+                        row.Cells["Osszeg"].Value = dr.GetInt32("osszeg");
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.kivalasztott_tag = dataGridView_Tagok.SelectedRows[0];
+            Program.form_Befizetes.ShowDialog();
+            this.Show();
+            Befizetesek_Tabla_Update((int)Program.kivalasztott_tag.Cells["ID"].Value);
         }
     }
 }

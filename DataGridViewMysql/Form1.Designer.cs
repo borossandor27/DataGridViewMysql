@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox_Tagok = new System.Windows.Forms.GroupBox();
+            this.textBox_Orszag = new System.Windows.Forms.TextBox();
             this.button_Tag_Delete = new System.Windows.Forms.Button();
             this.button_Tag_Update = new System.Windows.Forms.Button();
             this.button_Tag_Insert = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.módosításToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Bottom = new System.Windows.Forms.Panel();
-            this.textBox_Orszag = new System.Windows.Forms.TextBox();
             this.groupBox_Tagok.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SzuletesiEv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Iranyitoszam)).BeginInit();
@@ -83,6 +83,14 @@
             this.groupBox_Tagok.TabIndex = 0;
             this.groupBox_Tagok.TabStop = false;
             this.groupBox_Tagok.Text = "Tag adatai";
+            // 
+            // textBox_Orszag
+            // 
+            this.textBox_Orszag.Location = new System.Drawing.Point(282, 44);
+            this.textBox_Orszag.Name = "textBox_Orszag";
+            this.textBox_Orszag.Size = new System.Drawing.Size(65, 20);
+            this.textBox_Orszag.TabIndex = 9;
+            this.textBox_Orszag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_Tag_Delete
             // 
@@ -276,6 +284,7 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(65, 20);
             this.toolStripMenuItem2.Text = "Befizetés";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // panel_Bottom
             // 
@@ -286,14 +295,6 @@
             this.panel_Bottom.Name = "panel_Bottom";
             this.panel_Bottom.Size = new System.Drawing.Size(891, 423);
             this.panel_Bottom.TabIndex = 8;
-            // 
-            // textBox_Orszag
-            // 
-            this.textBox_Orszag.Location = new System.Drawing.Point(282, 44);
-            this.textBox_Orszag.Name = "textBox_Orszag";
-            this.textBox_Orszag.Size = new System.Drawing.Size(65, 20);
-            this.textBox_Orszag.TabIndex = 9;
-            this.textBox_Orszag.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
