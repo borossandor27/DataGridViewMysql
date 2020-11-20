@@ -41,6 +41,7 @@ namespace DataGridViewMysql
              * de most ez is dinamikusan van meghatározva
              */
             dataGridView_Tagok.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView_Tagok.EnableHeadersVisualStyles = false;
             dataGridView_Tagok.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView_Tagok.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             dataGridView_Tagok.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -118,6 +119,8 @@ namespace DataGridViewMysql
 
         private void Befizetesek_Adattabla_beallitasai()
         {
+            dataGridView_Befizetesek.EnableHeadersVisualStyles = false;
+
             dataGridView_Befizetesek.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView_Befizetesek.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DataGridViewColumn column_ID = new DataGridViewColumn();
